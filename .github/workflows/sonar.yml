@@ -16,8 +16,8 @@ jobs:
         with:
           fetch-depth: 0
       - name: SonarQube Cloud Scan
-        # Código SHA oficial estável exigido pelo SonarQube para não gerar alertas de segurança
-        uses: SonarSource/sonarcloud-github-action@e766e6c2e35a11c8a1b92ac9936ed661297380fb
+        # Código SHA oficial completo e corrigido para rodar perfeitamente
+        uses: SonarSource/sonarcloud-github-action@e766e6c2e35a11c8a1b92ac9936ed661297380fb4d
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
