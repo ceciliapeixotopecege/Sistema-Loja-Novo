@@ -1,0 +1,27 @@
+name: SonarQube Analysis
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  sonarcloud:
+    name: SonarQube Cloud Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: SonarQube Cloud Scan
+        # Código SHA oficial estável exigido pelo SonarQube para não gerar alertas de segurança
+        uses: SonarSource/sonarcloud-github-action@e766e6c2e35a11c8a1b92ac9936ed661297380fb
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=Sistema-Loja-Novo
+            -Dsonar.organization=ceciliapeixotopecege
